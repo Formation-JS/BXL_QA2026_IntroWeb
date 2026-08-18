@@ -6,6 +6,16 @@ const msgGameForm = document.getElementById('message-game-form');
 
 //! Variable de stockage
 const letterAlreadySubmit = [];
+let mysteryWord;
+
+//! Setup du jeu
+function startGame() {
+    // TODO Rendre aleatoire le choix de mot
+    mysteryWord = 'SOLEIL';
+    // Reset des lettres envoyées
+    letterAlreadySubmit.splice(0, letterAlreadySubmit.length);
+}
+startGame();
 
 //! Réaction à la validation du formulaire
 gameForm.addEventListener('submit', function (event) {
