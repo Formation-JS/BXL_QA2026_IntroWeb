@@ -3,17 +3,21 @@ console.log("Jeu du pendu !");
 //! Récuperation du formulaire dans le DOM de la page
 const gameForm = document.getElementById('game-form');
 const msgGameForm = document.getElementById('message-game-form');
+const displayWord = document.getElementById('le-mot-à-trouver');
 
 //! Variable de stockage
 const letterAlreadySubmit = [];
 let mysteryWord;
+let lettersFound;
 
 //! Setup du jeu
 function startGame() {
     // TODO Rendre aleatoire le choix de mot
-    mysteryWord = 'SOLEIL';
+    mysteryWord = ['S', 'O', 'L', 'E', 'I', 'L'];
+    lettersFound = [];
     // Reset des lettres envoyées
     letterAlreadySubmit.splice(0, letterAlreadySubmit.length);
+    updateDisplayWord();
 }
 startGame();
 
@@ -38,11 +42,45 @@ gameForm.addEventListener('submit', function (event) {
     }
     else {
         letterAlreadySubmit.push(letter);
-        msgGameForm.textContent = `La lettre selectionnée est ${letter}`;
-
-        // TODO...
+        
+        if(checkLetterIsValid(letter)) {
+            msgGameForm.textContent = `La lettre ${letter} est dans le mot`;
+            updateDisplayWord();
+        }
+        else {
+            msgGameForm.textContent = `La lettre ${letter} n'est pas dans le mot`;
+        }
     }
 
     // Efface la valeur de l'input
     userInput.value = '';
 });
+
+function checkLetterIsValid(letter) {
+    if(mysteryWord.includes(letter)) {
+        lettersFound.push(letter);
+        return true;
+    }
+    return false;
+}
+
+function updateDisplayWord() {
+    displayWord.innerHTML = '';
+
+    for(const letter of mysteryWord) {
+
+        // Création d'un balise "span" en JS (Pas afficher)
+        const span = document.createElement('span');
+
+        // Moficiation du contenu du "span"
+        if(lettersFound.includes(letter)) {
+            span.textContent = letter;
+        }
+        else {
+            span.textContent = '_';
+        }
+
+        // Ajoute la balise "span" à la balise "p"
+        displayWord.append(span);
+    }
+}
