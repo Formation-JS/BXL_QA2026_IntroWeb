@@ -51,9 +51,14 @@ gameForm.addEventListener('submit', function (event) {
             msgGameForm.textContent = `La lettre ${letter} n'est pas dans le mot`;
         }
     }
-
+    
     // Efface la valeur de l'input
     userInput.value = '';
+    
+    // On continue ?
+    if(checkGameOver()) {
+        msgGameForm.textContent = `Bravo, vous avez gagné`;
+    }
 });
 
 function checkLetterIsValid(letter) {
@@ -83,4 +88,12 @@ function updateDisplayWord() {
         // Ajoute la balise "span" à la balise "p"
         displayWord.append(span);
     }
+}
+
+function checkGameOver() {
+    // Les letters du mots (sans doublon)
+    const mysteryWordSet = new Set(mysteryWord);
+    const lettersFoundSet = new Set(lettersFound);
+
+    return lettersFoundSet.isSupersetOf(mysteryWordSet);
 }
