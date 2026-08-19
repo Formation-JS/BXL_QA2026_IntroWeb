@@ -4,6 +4,7 @@ console.log("Jeu du pendu !");
 const gameForm = document.getElementById('game-form');
 const msgGameForm = document.getElementById('message-game-form');
 const displayWord = document.getElementById('le-mot-à-trouver');
+const displayLetters = document.getElementById('lettres-proposees');
 
 //! Variable de stockage
 const letterAlreadySubmit = [];
@@ -49,6 +50,7 @@ gameForm.addEventListener('submit', function (event) {
         }
         else {
             msgGameForm.textContent = `La lettre ${letter} n'est pas dans le mot`;
+            updateDisplayLetters();
         }
     }
     
@@ -96,4 +98,15 @@ function checkGameOver() {
     const lettersFoundSet = new Set(lettersFound);
 
     return lettersFoundSet.isSupersetOf(mysteryWordSet);
+}
+
+function updateDisplayLetters(){
+    const wrongLetters = [];
+
+    for(const letter of letterAlreadySubmit){
+        if(!mysteryWord.includes(letter)){
+            wrongLetters.push(letter);
+        }
+    }
+    displayLetters.textContent = wrongLetters.join(' - ');
 }
