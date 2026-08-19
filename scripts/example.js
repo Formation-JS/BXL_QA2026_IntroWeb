@@ -6,6 +6,7 @@ const msgGameForm = document.getElementById('message-game-form');
 const displayWord = document.getElementById('le-mot-à-trouver');
 const displayLetters = document.getElementById('lettres-proposees');
 const displayMaxTries = document.getElementById('nombre-vies');
+const btnReplay = document.getElementById('btn-rejouer');
 
 //! Constante globale
 const MAX_TRIES = 6;
@@ -143,3 +144,7 @@ function getRandomMysteryWord(){
     console.log(index,temp)
 return temp.toUpperCase().split('')
 }
+
+btnReplay.addEventListener('click', function(){
+    startGame()
+})
