@@ -5,19 +5,26 @@ const gameForm = document.getElementById('game-form');
 const msgGameForm = document.getElementById('message-game-form');
 const displayWord = document.getElementById('le-mot-à-trouver');
 const displayLetters = document.getElementById('lettres-proposees');
+const displayMaxTries = document.getElementById('nombre-vies');
+
+//! Constante globale
+const MAX_TRIES = 6;
 
 //! Variable de stockage
 const letterAlreadySubmit = [];
 let mysteryWord;
 let lettersFound;
+let remainingTries;
 
 //! Setup du jeu
 function startGame() {
     // TODO Rendre aleatoire le choix de mot
     mysteryWord = ['S', 'O', 'L', 'E', 'I', 'L'];
     lettersFound = ['-', ' '];
+    remainingTries = MAX_TRIES;
     // Reset des lettres envoyées
     letterAlreadySubmit.splice(0, letterAlreadySubmit.length);
+    updateMaxTries();
     updateDisplayWord();
 }
 startGame();
@@ -50,6 +57,8 @@ gameForm.addEventListener('submit', function (event) {
         }
         else {
             msgGameForm.textContent = `La lettre ${letter} n'est pas dans le mot`;
+            remainingTries--;
+            updateMaxTries();
             updateDisplayLetters();
         }
     }
@@ -58,8 +67,12 @@ gameForm.addEventListener('submit', function (event) {
     userInput.value = '';
     
     // On continue ?
-    if(checkGameOver()) {
-        msgGameForm.textContent = `Bravo, vous avez gagné`;
+    if(checkVictory()) {
+        msgGameForm.textContent = 'Bravo, vous avez gagné';
+    } 
+    else if (checkDefeat()) {
+        msgGameForm.textContent = 'Bouhou ! T\'es mauvais !';
+        updateDisplayWord(true);
     }
 });
 
@@ -71,7 +84,7 @@ function checkLetterIsValid(letter) {
     return false;
 }
 
-function updateDisplayWord() {
+function updateDisplayWord(force = false) {
     displayWord.innerHTML = '';
 
     for(const letter of mysteryWord) {
@@ -80,7 +93,7 @@ function updateDisplayWord() {
         const span = document.createElement('span');
 
         // Moficiation du contenu du "span"
-        if(lettersFound.includes(letter)) {
+        if(force || lettersFound.includes(letter)) {
             span.textContent = letter;
         }
         else {
@@ -92,12 +105,16 @@ function updateDisplayWord() {
     }
 }
 
-function checkGameOver() {
+function checkVictory() {
     // Les letters du mots (sans doublon)
     const mysteryWordSet = new Set(mysteryWord);
     const lettersFoundSet = new Set(lettersFound);
 
     return lettersFoundSet.isSupersetOf(mysteryWordSet);
+}
+
+function checkDefeat() {
+    return remainingTries <= 0
 }
 
 function updateDisplayLetters(){
@@ -109,4 +126,8 @@ function updateDisplayLetters(){
         }
     }
     displayLetters.textContent = wrongLetters.join(' - ');
+}
+
+function updateMaxTries(){
+    displayMaxTries.textContent = remainingTries;
 }
