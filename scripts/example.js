@@ -14,7 +14,7 @@ let lettersFound;
 function startGame() {
     // TODO Rendre aleatoire le choix de mot
     mysteryWord = ['S', 'O', 'L', 'E', 'I', 'L'];
-    lettersFound = [];
+    lettersFound = ['-', ' '];
     // Reset des lettres envoyées
     letterAlreadySubmit.splice(0, letterAlreadySubmit.length);
     updateDisplayWord();
