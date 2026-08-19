@@ -9,7 +9,7 @@ const displayMaxTries = document.getElementById('nombre-vies');
 
 //! Constante globale
 const MAX_TRIES = 6;
-const WORDS = ['Soleil', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Terre', 'Venus', 'Mars', 'Ganymede', 'Titan', 'Mercure', 'Callisto', 'Io', 'Lune', 'Europa', 'Triton', 'Pluton', 'Titania', 'Rhea', 'Oberon', 'Japet', 'Charon', 'Umbriel', 'Ariel', 'Dione', 'Tethys', 'Ceres', 'Vesta', 'Pallas', 'Encelade', 'Miranda', 'Protee', 'Mimas', 'Hyperion', 'Iris', 'Phoebe', 'Janus', 'Epimethee', 'Lutece', 'Promethee', 'Pandore', 'Mathilde', 'Helene', 'Ida', 'Arrokoth', 'Phobos', 'Déimos', 'Tchourioumov-Guérassimenko', 'Hartley 2', 'Sagittarius A'];
+const WORDS = ['Soleil', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Terre', 'Venus', 'Mars', 'Ganymede', 'Titan', 'Mercure', 'Callisto', 'Io', 'Lune', 'Europa', 'Triton', 'Pluton', 'Titania', 'Rhea', 'Oberon', 'Japet', 'Charon', 'Umbriel', 'Ariel', 'Dione', 'Tethys', 'Ceres', 'Vesta', 'Pallas', 'Encelade', 'Miranda', 'Protee', 'Mimas', 'Hyperion', 'Iris', 'Phoebe', 'Janus', 'Epimethee', 'Lutece', 'Promethee', 'Pandore', 'Mathilde', 'Helene', 'Ida', 'Arrokoth', 'Phobos', 'Deimos', 'Tchourioumov-Guerassimenko', 'Hartley 2', 'Sagittarius A'];
 
 //! Variable de stockage
 const letterAlreadySubmit = [];
@@ -30,6 +30,7 @@ function startGame() {
     letterAlreadySubmit.splice(0, letterAlreadySubmit.length);
     updateMaxTries();
     updateDisplayWord();
+    updateDisplayLetters();
 }
 startGame();
 
