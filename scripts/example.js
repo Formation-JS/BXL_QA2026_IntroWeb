@@ -9,6 +9,7 @@ const displayMaxTries = document.getElementById('nombre-vies');
 
 //! Constante globale
 const MAX_TRIES = 6;
+const WORDS = ['Soleil', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Terre', 'Venus', 'Mars', 'Ganymede', 'Titan', 'Mercure', 'Callisto', 'Io', 'Lune', 'Europa', 'Triton', 'Pluton', 'Titania', 'Rhea', 'Oberon', 'Japet', 'Charon', 'Umbriel', 'Ariel', 'Dione', 'Tethys', 'Ceres', 'Vesta', 'Pallas', 'Encelade', 'Miranda', 'Protee', 'Mimas', 'Hyperion', 'Iris', 'Phoebe', 'Janus', 'Epimethee', 'Lutece', 'Promethee', 'Pandore', 'Mathilde', 'Helene', 'Ida', 'Arrokoth', 'Phobos', 'Déimos', 'Tchourioumov-Guérassimenko', 'Hartley 2', 'Sagittarius A'];
 
 //! Variable de stockage
 const letterAlreadySubmit = [];
@@ -19,7 +20,10 @@ let remainingTries;
 //! Setup du jeu
 function startGame() {
     // TODO Rendre aleatoire le choix de mot
-    mysteryWord = ['S', 'O', 'L', 'E', 'I', 'L'];
+    // mysteryWord = ['S', 'O', 'L', 'E', 'I', 'L'];
+    mysteryWord = getRandomMysteryWord();
+    console.log(mysteryWord);
+    
     lettersFound = ['-', ' '];
     remainingTries = MAX_TRIES;
     // Reset des lettres envoyées
@@ -130,4 +134,11 @@ function updateDisplayLetters(){
 
 function updateMaxTries(){
     displayMaxTries.textContent = remainingTries;
+}
+
+function getRandomMysteryWord(){
+    const index = Math.floor(Math.random()* (WORDS.length ));
+    const temp = WORDS[index]
+    console.log(index,temp)
+return temp.toUpperCase().split('')
 }

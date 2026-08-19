@@ -14,6 +14,6 @@ _Bonus : Révélé le mot qu'il fallait trouvé._
 ## Rendre aleatoire le choix du mot
 En se basant que cette liste JS, selectionner un mot aléatoire.
 ```js
-const words = ['Soleil', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Terre', 'Venus', 'Mars', 'Ganymede', 'Titan', 'Mercure', 'Callisto', 'Io', 'Lune', 'Europa', 'Triton', 'Pluton', 'Titania', 'Rhea', 'Oberon', 'Japet', 'Charon', 'Umbriel', 'Ariel', 'Dione', 'Tethys', 'Ceres', 'Vesta', 'Pallas', 'Encelade', 'Miranda', 'Protee', 'Mimas', 'Hyperion', 'Iris', 'Phoebe', 'Janus', 'Epimethee', 'Lutece', 'Promethee', 'Pandore', 'Mathilde', 'Helene', 'Ida', 'Arrokoth', 'Phobos', 'Déimos', 'Tchourioumov-Guérassimenko', 'Hartley 2', 'Sagittarius A'];
+const WORDS = ['Soleil', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Terre', 'Venus', 'Mars', 'Ganymede', 'Titan', 'Mercure', 'Callisto', 'Io', 'Lune', 'Europa', 'Triton', 'Pluton', 'Titania', 'Rhea', 'Oberon', 'Japet', 'Charon', 'Umbriel', 'Ariel', 'Dione', 'Tethys', 'Ceres', 'Vesta', 'Pallas', 'Encelade', 'Miranda', 'Protee', 'Mimas', 'Hyperion', 'Iris', 'Phoebe', 'Janus', 'Epimethee', 'Lutece', 'Promethee', 'Pandore', 'Mathilde', 'Helene', 'Ida', 'Arrokoth', 'Phobos', 'Déimos', 'Tchourioumov-Guérassimenko', 'Hartley 2', 'Sagittarius A'];
 ```
 
